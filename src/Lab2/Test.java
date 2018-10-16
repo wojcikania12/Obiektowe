@@ -25,25 +25,27 @@ public class Test {
                     b = odczyt.nextDouble();
                     Prostokat prostokat = new Prostokat(a, b);
                     figury.add(prostokat);
+                    System.out.println("Dodano prostokat. \n");
                     break;
                 case(2):
-                    for(int i =0; i < figury.size(); i++){
-                        System.out.println("Prostokat " + (i+1) + " : " + figury.get(i).getA() + " x " +
-                                figury.get(i).getB() +'\n');
+                    int i = 1;
+                    for(Prostokat it : figury){
+                        System.out.println("Prostokat " + (i++) + " : " + it.getA() + " x " +
+                                it.getB() +'\n');
                     }
                     break;
                 case(3):
                     double suma = 0;
-                    for(int i =0; i < figury.size(); i++){
-                        suma += figury.get(i).area();
+                    for(Prostokat it : figury){
+                        suma += it.area();
                     }
-                    System.out.println("Suma pol prostokatow: " + suma);
+                    System.out.println("Suma pol prostokatow: " + suma + '\n');
                     break;
                 case(4):
                     uruchom = false;
                     break;
                 default:
-                    System.out.println("Nie ma takiej opcji :C.");
+                    System.out.println("Nie ma takiej opcji :C. \n");
                     break;
             }
 
