@@ -8,7 +8,7 @@ public class SendMail {
         temp.add("sosenkiewicz.marta@gmail.com");
         temp.add("wojcikania12@wp.pl");
 
-        EmailMessage message = new EmailMessage.Builder("wojcikania12@wp.pl",temp).subject("Ungabunga").content("Ble").build();
+        EmailMessage message = new EmailMessage.Builder("wojcikania12@wp.pl",temp).subject("Temat").content("123").build();
         message.send();
     }
 }
