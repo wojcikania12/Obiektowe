@@ -56,7 +56,7 @@ public class EmailMessage {
     }
 
     public static boolean validateEmail(String email){
-        String regex_pattern = "(^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$)";
+        String regex_pattern = "^[\\w._%+-]+@([\\w-]+\\.)+[a-z]{2,}$";
         Pattern r = Pattern.compile(regex_pattern);
         Matcher m = r.matcher(email);
         return  m.matches();
