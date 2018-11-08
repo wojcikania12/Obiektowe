@@ -1,10 +1,9 @@
 package Lab5;
 
+import java.io.*;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.io.PrintWriter;
-import java.io.File;
 
 
 public class MicroDVD{
@@ -13,13 +12,13 @@ public class MicroDVD{
         return actual_frame + delay * fps / 1000;
     }
 
-    public  void delay(String input,String output ,int delay, int fps) throws Exception{
+    public  void delay(String input,String output ,int delay, int fps) throws InvalidFormatException,WrongSequenceException
+    , IOException{
         int line =0;
-        File from = new File(input);
-        File to = new File(output);
-        Scanner from_ = new Scanner(from);
-        PrintWriter to_ = new PrintWriter(to);
-
+            File from = new File(input);
+            File to = new File(output);
+            Scanner from_ = new Scanner(from);
+            PrintWriter to_ = new PrintWriter(to);
         while (from_.hasNextLine()) {
             String temp = from_.nextLine();
             line++;
