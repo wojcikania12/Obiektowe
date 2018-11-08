@@ -13,7 +13,7 @@ public class MicroDVD{
     }
 
     public  void delay(String input,String output ,int delay, int fps) throws InvalidFormatException,WrongSequenceException
-    , FileNotFoundException{
+    ,FileNotFoundException{
         int line =0;
             File from = new File(input);
             File to = new File(output);
