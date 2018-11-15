@@ -6,6 +6,7 @@ import Lab6.Shapes.*;
 
 public class MyFrame extends JFrame {
     public MyFrame(){
+
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setSize(width/2,height/2);
@@ -16,8 +17,9 @@ public class MyFrame extends JFrame {
 
     }
     public static void main(String[] args) {
-       MyFrame f= new MyFrame();
+        MyFrame f= new MyFrame();
         MyPanel p = new MyPanel();
+
         Circle c = new Circle(200);
         c.setY(100);
         c.setX(50);
@@ -30,15 +32,16 @@ public class MyFrame extends JFrame {
         Rectangle r = new Rectangle(60,80);
         r.setX(300);
         r.setY(250);
-        Point p1 = new Point(20,20);
-        Point p2 = new Point(100,100);
-        Point p3 = new Point(600,100);
-        Triangle t = new Triangle(p1,p2,p3);
+        Triangle t = new Triangle(200,100);
+        t.setX(500);
+        t.setY(200);
+
         p.add(s);
         p.add(c);
         p.add(t);
         p.add(r);
         p.add(c2);
+
         f.getContentPane().add(p);
         f.setVisible(true);
 

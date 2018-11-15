@@ -9,55 +9,53 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseListener;
 
 public class MyPanel extends JPanel implements MouseListener, MouseMotionListener  {
-    private int dragFromX =0;
-    private int dragFromY =0;
-    private int x,y;
-    private Shape tmp;
+    private int x = 0;
+    private int y  = 0;
+    private int d_x = 0;
+    private int d_y = 0 ;
     private LinkedList<Shape> shapes;
+    boolean dragging = false;
+    boolean clicked = false;
+
     public MyPanel(){
         shapes = new LinkedList<Shape>();
         addMouseListener(this);
         addMouseMotionListener(this);
     }
+
     public MyPanel(LinkedList<Shape> s){
         shapes = new LinkedList<Shape>(s);
         addMouseListener(this);
         addMouseMotionListener(this);
     }
+
     public void add(Shape s){
         shapes.add(s);
     }
-    private void paintShape(Graphics graphic){
-        super.paintComponent(graphic);
+    public void paint(Graphics graphic){
         for(Shape s : shapes){
             s.draw(graphic);
         }
-    }
-
-    public void paint(Graphics g){
-        this.paintShape(g);
         repaint();
     }
     public void mousePressed(MouseEvent evt){
-        x= evt.getX();
-        y= evt.getY();
+        x = evt.getX();
+        y = evt.getY();
 
     }
     public void mouseDragged(MouseEvent evt){
-        int dx = evt.getX() - x;
-        int dy = evt.getY() - y;
+        d_x = evt.getX() - x;
+        d_y = evt.getY() - y;
         for(Shape s : shapes){
-            if(x>=s.getX()&& x<=(s.getX()+s.getE())&& y>= s.getY() && y<=(s.getY()+s.getSecondE())) {
-                s.setX(s.getX() +dx);
-                s.setY(s.getY() +dy);
+            if(s.contains(x,y)){
+                s.setX(s.getX()+d_x);
+                s.setY(s.getY()+d_y);
                 break;
             }
-            else{
-                
-            }
         }
-        x += dx;
-        y += dy;
+        x += d_x;
+        y += d_y;
+
     }
     public void mouseReleased(MouseEvent evt){}
     public void mouseClicked(MouseEvent evt) { }
