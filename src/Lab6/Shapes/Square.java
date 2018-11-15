@@ -1,17 +1,19 @@
 package Lab6.Shapes;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 
 public class Square extends Shape {
     private int a;
     private int x = 100;
     private int y = 100;
+    private Rectangle2D.Float s;
     public Square(int a_){
         a = a_;
-        edges = 4;
     }
     public void setX(int x_){
+
         x = x_;
     }
     public void setY(int y_){
@@ -23,14 +25,13 @@ public class Square extends Shape {
     public int getY(){
         return y;
     }
-    public int getE(){
-        return a;
-    }
-    public int getSecondE(){
-        return a;
+    public boolean contains(int dx,int dy) {
+        return s.contains(dx,dy);
     }
     public void draw(Graphics graphic){
-        graphic.setColor(new Color(162, 208, 221));
-        graphic.fillRect(x,y,a,a);
+        Graphics2D g2 = (Graphics2D) graphic;
+        s= new Rectangle2D.Float(x,y,a,a);
+        g2.setColor(new Color(162, 208, 221));
+        g2.fill(s);
     }
 }

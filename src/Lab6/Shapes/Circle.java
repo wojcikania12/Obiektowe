@@ -1,15 +1,16 @@
 package Lab6.Shapes;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 
 
 public class Circle extends Shape {
     private int radius;
     private int x = 100;
     private int y = 100;
+    private Ellipse2D.Float c;
     public Circle(int radius_){
         radius = radius_;
-        edges =0;
     }
     public void setX(int x_){
         x = x_;
@@ -23,14 +24,15 @@ public class Circle extends Shape {
     public int getY(){
         return y;
     }
-    public int getE(){
-        return radius;
+
+    public boolean contains(int dx,int dy) {
+        return c.contains(dx, dy);
     }
-    public int getSecondE(){
-        return radius;
-    }
+
     public void draw(Graphics graphic){
-        graphic.setColor(new Color(219,176,239));
-        graphic.fillOval(x,y,radius,radius);
+        Graphics2D g2 = (Graphics2D) graphic;
+        c = new Ellipse2D.Float(x, y, radius, radius);
+        g2.setColor(new Color(219,176,239));
+        g2.fill(c);
     }
 }

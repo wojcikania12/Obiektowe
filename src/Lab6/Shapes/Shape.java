@@ -3,14 +3,11 @@ import java.awt.*;
 
 
 public abstract class Shape{
-    public String name;
-    public int edges;
     public abstract void setX(int x_);
     public abstract void setY(int y_);
     public abstract int getX();
     public abstract int getY();
-    public abstract int getE();
-    public abstract int getSecondE();
+    public abstract boolean contains(int dx,int dy);
     public abstract void draw(Graphics graphic);
 
 }

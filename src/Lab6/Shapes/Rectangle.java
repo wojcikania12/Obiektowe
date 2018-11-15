@@ -1,16 +1,18 @@
 package Lab6.Shapes;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 public class Rectangle extends Shape {
     private int a;
     private int b;
     private int x = 100;
     private int y = 100;
+    private Rectangle2D.Float r;
+
     public Rectangle(int a_, int b_){
         a = a_;
         b = b_;
-        edges = 4;
     }
     public void setX(int x_){
         x = x_;
@@ -24,17 +26,14 @@ public class Rectangle extends Shape {
     public int getY(){
         return y;
     }
-    public int getE(){
-        return a;
+    public boolean contains(int dx, int dy) {
+        return r.contains(dx, dy);
     }
-    public int getSecondE(){
-        return b;
-    }
-
 
     public void draw(Graphics graphic){
-        Graphics2D graphic2d = (Graphics2D) graphic;
-        graphic2d.setColor(new Color(255,	192	,203));
-        graphic2d.fillRect(x,y,a,b);
+        Graphics2D g2 = (Graphics2D) graphic;
+        r = new Rectangle2D.Float(x,y,a,b);
+        g2.setColor(new Color(255,	192	,203));
+        g2.fill(r);
     }
 }

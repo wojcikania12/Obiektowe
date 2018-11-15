@@ -3,48 +3,36 @@ package Lab6.Shapes;
 import java.awt.*;
 
 public class Triangle extends Shape {
-  private  Polygon poly;
-    private int edges;
+  private int a;
+  private int h;
+  private int x = 100;
+  private int y = 100;
+  private Polygon poly;
 
-    public Triangle(Point p1, Point p2, Point p3){
-        poly = new Polygon();
-        poly.addPoint(p1.x, p1.y);
-        poly.addPoint(p2.x, p2.y);
-        poly.addPoint(p3.x, p3.y);
-        edges = 3;
+  public Triangle(int a_, int h_){
+       a = a_;
+       h = h_;
     }
-
-    @Override
     public void setX(int x_) {
-
+      x = x_;
     }
-
-    @Override
     public void setY(int y_) {
-
+      y = y_;
     }
-
-    @Override
     public int getX() {
-        return 0;
+      return x;
     }
-
-    @Override
     public int getY() {
-        return 0;
+      return y;
     }
-
-    @Override
-    public int getE() {
-        return 0;
-    }
-
-    @Override
-    public int getSecondE() {
-        return 0;
-    }
-
+    public boolean contains(int dx,int dy) {
+        return poly.contains(dx, dy);
+  }
     public void draw(Graphics graphic){
+        poly  = new Polygon();
+        poly.addPoint(x,y);
+        poly.addPoint(x - (int)a/2,y +h);
+        poly.addPoint(x +(int)a/2,y +h);
         graphic.setColor(new Color(162, 208, 163));
         graphic.fillPolygon(poly);
     }
