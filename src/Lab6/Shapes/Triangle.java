@@ -12,7 +12,7 @@ public class Triangle extends Shape {
   public Triangle(int a_, int h_){
        a = a_;
        h = h_;
-    }
+  }
     public void setX(int x_) {
       x = x_;
     }
