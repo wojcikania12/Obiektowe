@@ -1,4 +1,4 @@
-package Lab6;
+package Lab6.ShapesDrawer;
 
 import Lab6.Shapes.*;
 import javax.swing.*;

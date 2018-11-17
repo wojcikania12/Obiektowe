@@ -1,12 +1,13 @@
-package Lab6;
+package Lab6.ShapesDrawer;
 import java.awt.Toolkit;
-import java.awt.Point;
 import javax.swing.*;
+
 import Lab6.Shapes.*;
 
 public class MyFrame extends JFrame {
     public MyFrame(){
 
+        setTitle("Przesuwanie figur :D");
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setSize(width/2,height/2);
