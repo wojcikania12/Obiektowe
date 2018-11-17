@@ -63,7 +63,7 @@ public class GraphPanel extends JPanel implements ActionListener {
             poczatek += distance;
         }
 
-        skala_y = ((getWidth()/2 - margin)/max);
+        skala_y = ((getHeight()/2 - margin)/max);
         if(modul(x[(int)distance])> modul(x[0]))
             skala_x = modul((getWidth()/2 - margin)/x[(int)distance]);
         else
