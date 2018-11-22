@@ -33,7 +33,9 @@ public class GraphDrawer2 extends Application {
         double poczatek = -5;
         double distance =(double) modul((koniec - poczatek)/krok);
         try {
+/*
             Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+*/
             final NumberAxis xAxis = new NumberAxis();
             final NumberAxis yAxis = new NumberAxis();
             LineChart<Number,Number> lineChart = new LineChart<Number,Number>(xAxis,yAxis);
