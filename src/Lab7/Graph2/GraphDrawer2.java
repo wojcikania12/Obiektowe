@@ -4,16 +4,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class GraphDrawer2 implements Initializable {
-    private int skok_;
-    private double poczatek_;
-    private double koniec_;
-    private double [] wsp_=new double[6];
+    private int krok_i;
+    private double poczatek_d;
+    private double koniec_d;
+    private double [] wsp_d=new double[6];
 
     @FXML public Button rysuj;
     @FXML public TextField a;
@@ -25,8 +26,8 @@ public class GraphDrawer2 implements Initializable {
     @FXML public TextField start;
     @FXML public TextField stop;
     @FXML public TextField krok;
-    XYChart.Series series = new XYChart.Series();
-    @FXML public LineChart linechart;
+    XYChart.Series seria = new XYChart.Series();
+    @FXML public LineChart wykres;
 
     private double function(double []wsp,double  arg ){
         double wynik =0.0;
@@ -37,43 +38,43 @@ public class GraphDrawer2 implements Initializable {
 
     private void handleTextFieldData(){
         try{
-            if (a.getText().isEmpty()) wsp_[0] = 0;
-            else wsp_[0] = Double.parseDouble(a.getText());
+            if (a.getText().isEmpty()) wsp_d[0] = 0;
+            else wsp_d[0] = Double.parseDouble(a.getText());
 
-            if (b.getText().isEmpty()) wsp_[1] = 0;
-            else wsp_[1]= Double.parseDouble(b.getText());
+            if (b.getText().isEmpty()) wsp_d[1] = 0;
+            else wsp_d[1]= Double.parseDouble(b.getText());
 
-            if (c.getText().isEmpty()) wsp_[2] = 0;
-            else wsp_[2]= Double.parseDouble(c.getText());
+            if (c.getText().isEmpty()) wsp_d[2] = 0;
+            else wsp_d[2]= Double.parseDouble(c.getText());
 
-            if (d.getText().isEmpty()) wsp_[3] = 0;
-            else wsp_[3]= Double.parseDouble(d.getText());
+            if (d.getText().isEmpty()) wsp_d[3] = 0;
+            else wsp_d[3]= Double.parseDouble(d.getText());
 
-            if (e.getText().isEmpty()) wsp_[4] = 0;
-            else wsp_[4]= Double.parseDouble(e.getText());
+            if (e.getText().isEmpty()) wsp_d[4] = 0;
+            else wsp_d[4]= Double.parseDouble(e.getText());
 
-            if (f.getText().isEmpty()) wsp_[5] = 0;
-            else wsp_[5]= Double.parseDouble(f.getText());
+            if (f.getText().isEmpty()) wsp_d[5] = 0;
+            else wsp_d[5]= Double.parseDouble(f.getText());
 
-            if (start.getText().isEmpty()) poczatek_ = 0;
-            else poczatek_ = Double.parseDouble(start.getText());
+            if (start.getText().isEmpty()) poczatek_d = 0;
+            else poczatek_d = Double.parseDouble(start.getText());
 
-            if (stop.getText().isEmpty()) koniec_ = poczatek_+1;
-            else koniec_ = Double.parseDouble(stop.getText());
+            if (stop.getText().isEmpty()) koniec_d = poczatek_d+1;
+            else koniec_d = Double.parseDouble(stop.getText());
 
-            if (krok.getText().isEmpty()) skok_ = 100;
-            else skok_ = Integer.parseInt(krok.getText());
+            if (krok.getText().isEmpty()) krok_i= 50;
+            else krok_i = Integer.parseInt(krok.getText());
 
         }catch (NumberFormatException ex){
             System.err.println("Złe wprowadzone wartości");
         }
 
-        if(skok_< 0) skok_=1;
+        if(krok_i< 3) krok_i=3;
 
-        if(poczatek_>koniec_){
-            double temp = koniec_;
-            koniec_ = poczatek_;
-            poczatek_ = temp;
+        if(poczatek_d>koniec_d){
+            double temp = koniec_d;
+            koniec_d = poczatek_d;
+            poczatek_d= temp;
         }
 
     }
@@ -81,19 +82,20 @@ public class GraphDrawer2 implements Initializable {
     @FXML
     private void handleButtonAction(){
         rysuj.setOnAction((event) -> {
-            series.getData().clear();
+            seria.getData().clear();
             handleTextFieldData();
-            double distance =Math.abs((koniec_ - poczatek_)/(skok_ - 1));
-            for(double i = poczatek_; i <=koniec_;i+=distance){
-                series.getData().add(new XYChart.Data(i, function(wsp_,i)));
+            double distance =Math.abs((koniec_d - poczatek_d)/(krok_i - 1));
+            for(double i = poczatek_d; i <=koniec_d;i+=distance){
+                seria.getData().add(new XYChart.Data(i, function(wsp_d,i)));
             }
         });
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        linechart.setCreateSymbols(false);
-        linechart.getData().addAll(series);
+        wykres.setTitle("Wykres");
+        wykres.setCreateSymbols(false);
+        wykres.getData().addAll(seria);
     }
 }
 
