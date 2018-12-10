@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="594.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lab9.ChatClient">
+    <children>
+        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="584.0" prefWidth="387.0">
+            <children>
+                <ScrollPane fx:id="scroll" layoutX="12.0" layoutY="11.0" prefHeight="489.0" prefWidth="369.0">
+                    <content>
+                        <VBox fx:id="messages" prefHeight="487.0" prefWidth="361.0" />
+                    </content>
+                </ScrollPane>
+                <Button fx:id="send" layoutX="303.0" layoutY="507.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="43.0" prefWidth="79.0" text="Wyślij" />
+                <TextField fx:id="message" layoutX="12.0" layoutY="507.0" prefHeight="43.0" prefWidth="280.0" />
+            </children>
+        </AnchorPane>
+      <Button onAction="#run" fx:id="connect" layoutX="425.0" layoutY="345.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="141.0" text="Połącz" />
+      <TextField fx:id="ip" layoutX="412.0" layoutY="284.0" />
+      <TextField fx:id="nick" layoutX="412.0" layoutY="213.0" />
+      <Label layoutX="425.0" layoutY="174.0" prefHeight="17.0" prefWidth="90.0" text="Nick:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="419.0" layoutY="256.0" prefHeight="17.0" prefWidth="90.0" text="IP serwera:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
