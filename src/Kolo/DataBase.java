@@ -33,7 +33,7 @@ public  class DataBase {
         Game game = new Game(winner,player1,player2);
         try {
             stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO scores(id,winner,player1,player2) VALUES ((SELECT MAX(id)+1 FROM scores),'" +game.getWinner()
+            stmt.executeUpdate("INSERT INTO scores(id,winner,player1,player2) VALUES (1,'" +game.getWinner()
                     +"','" +game.getPlayer1()+"','"+ game.getPlayer2()+"');");
         } catch (SQLException ex) {
         } finally {
