@@ -1,6 +1,5 @@
 package Kolo;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,16 +21,18 @@ class GameThread implements Runnable{
         try {
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-           while(!in.readLine().equals("close")){
              winner = in.readLine();
              player1 = in.readLine();
              player2 = in.readLine();
-             db.connect();
-             if(db.isConnected())  db.addData(player1,player2,winner);
+            System.out.println("Client połączony z serwerem :D");
+            System.out.println("Gracz1: "+ player1);
+            System.out.println("Gracz2: "+player2);
+            System.out.println("Zwycięzca: "+winner);
+
+            db.connect();
+             if(db.isConnected())  db.addData(winner,player1,player2);
              else System.out.println("Nie połączono z bazą");
 
-           }
-            System.out.println(winner);
             out.close();
             in.close();
 
