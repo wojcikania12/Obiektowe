@@ -19,7 +19,7 @@ class GameThread implements Runnable{
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             String inputLine;
-            db.addData();
+
 
             while ((inputLine = in.readLine()) != null) {
                 out.println(inputLine);
