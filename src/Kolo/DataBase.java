@@ -2,11 +2,12 @@ package Kolo;
 
 import java.sql.*;
 
-public class DataBase {
+public  class DataBase {
     private Statement stmt = null;
     private ResultSet rs = null;
     private Connection conn =null;
     private boolean connected ;
+    static int id = 0 ;
 
     boolean isConnected(){
         return connected;
@@ -29,11 +30,12 @@ public class DataBase {
 
     }
 
-    void  addData(String name1,String name2,int score){
+    void  addData(String winner,String player1, String player2){
+        id++;
         try {
             stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO scores(player1,player2,score) VALUES ('"+name1+"','" +name2
-                    +"','" +score+"');");
+            stmt.executeUpdate("INSERT INTO scores(id,player1,player2,winner) VALUES ('" +id
+                    +"','" +player1+"','"+ player2+"','"+winner+"');");
         } catch (SQLException ex) {
         } finally {
             if (rs != null) {
