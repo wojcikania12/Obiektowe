@@ -2,7 +2,7 @@ package Kolo;
 
 import java.sql.*;
 
-public  class DataBase {
+public  class  DataBase {
     private Statement stmt = null;
     private ResultSet rs = null;
     private Connection conn =null;
@@ -33,8 +33,8 @@ public  class DataBase {
         Game game = new Game(winner,player1,player2);
         try {
             stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO scores(id,winner,player1,player2) SELECT MAX(id)+1 FROM scores,'" +game.getWinner()
-                    +"','" +game.getPlayer1()+"','"+ game.getPlayer2()+"';");
+            stmt.executeUpdate("INSERT INTO scores(id,winner,player1,player2) VALUES( SELECT MAX(id)+1 FROM scores,'" +game.getWinner()
+                    +"','" +game.getPlayer1()+"','"+ game.getPlayer2()+"');");
         } catch (SQLException ex) {
         } finally {
             if (rs != null) {
