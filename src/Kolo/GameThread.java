@@ -29,8 +29,13 @@ class GameThread implements Runnable{
             System.out.println("Gracz2: "+player2);
             System.out.println("Zwycięzca: "+winner);
 
+
             db.connect();
-             if(db.isConnected())  db.addData(winner,player1,player2);
+             if(db.isConnected()) {
+                 db.addData(winner,player1,player2);
+                 System.out.println("Dodano wynik");
+
+             }
              else System.out.println("Nie połączono z bazą");
 
             out.close();
