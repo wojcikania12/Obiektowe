@@ -30,10 +30,11 @@ public  class DataBase {
     }
 
     void  addData(String winner,String player1, String player2){
+        Game game = new Game(winner,player1,player2);
         try {
             stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO scores(id,player1,player2,winner) VALUES ((SELECT MAX(id)+1 FROM scores),'" +player1
-                    +"','" +player2+"','"+ winner+"');");
+            stmt.executeUpdate("INSERT INTO scores(id,player1,player2,winner) VALUES ((SELECT MAX(id)+1 FROM scores),'" +game.getPlayer1()
+                    +"','" +game.getPlayer2()+"','"+ game.getWinner()+"');");
         } catch (SQLException ex) {
         } finally {
             if (rs != null) {
