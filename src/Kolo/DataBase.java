@@ -32,8 +32,9 @@ public  class  DataBase {
     void  addData(String winner,String player1, String player2){
         Game game = new Game(winner,player1,player2);
         try {
+
             stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO scores(id,winner,player1,player2) VALUES( SELECT MAX(id)+1 FROM scores,'" +game.getWinner()
+            stmt.executeUpdate("INSERT INTO scores(winner,player1,player2) VALUES('"+game.getWinner()
                     +"','" +game.getPlayer1()+"','"+ game.getPlayer2()+"');");
         } catch (SQLException ex) {
         } finally {
@@ -54,7 +55,8 @@ public  class  DataBase {
                 stmt = null;
             }
         }
-
     }
+
+
 
 }
